@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - FamilyCalendar</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FamilyCalendar.styles.css" asp-append-version="true" />
+
+@*     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script> *@
+    <script src='/fullcalendar-6.1.11/dist/index.global.min.js'></script> @* Код для локально используемого fullcalendar*@
+    @* <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // locales: allLocales,
+                events: [
+                    {
+                        title: 'Приём у доктора Айболита',
+                        start: '2024-04-07T10:30:00',
+                        end: '2024-04-07T11:30:00',
+                        extendedProps: {
+                            department: 'Лаборатория'
+                        },
+                        description: 'Сдача анали крови'
+                    },
+                    {
+                        title: 'Приём у доктора Айболита',
+                        start: '2024-04-08T07:30:00',
+                        end: '2024-04-08T08:00:00',
+                        extendedProps: {
+                            department: 'Лаборатория'
+                        },
+                        description: 'Сдача анали крови'
+                    }
+                ],
+                locale:'ru',
+                nowindicatro: true,
+                headerToolbar: {
+                start: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right: 'prev,next'},
+                initialView: 'dayGridMonth',
+                firstDay: 1,
+                // height: 650,
+                aspectRatio: 2.5,
+            });
+            calendar.render();
+        });
+
+    </script> *@
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Calendar" asp-action="Index">Семейный календарь</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Index">Стартовая страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Privacy">Политика</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Register">Регистрация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Login">Вход</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id='calendar' style="width: 80%; margin: 0 auto;"></div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script> 
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

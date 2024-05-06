@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Razor;
+@using FamilyCalendar.Controllers;
+@model UserPageModel
+
+@{
+    ViewBag.Title = "Пользователь " + Model.FullUserName;
+}
+<body>
+    <h1>Добро пожаловать, @Model.FullUserName!</h1>
+
+    <form method="post">
+        <label for="name">Имя</label><br />
+        <input type="text" name="name" id="name" /><br /><br />
+        <label for="age">Возраст</label><br />
+        <input type="number" name="age" id="age" /><br /><br />
+        <input type="submit" value="Оправить" />
+    </form>
+
+    <form method="post" asp-controller="Calendar" asp-action="GetUserData">
+        <button type="submit" class="btn btn-primary">Получить данные</button>
+    </form>
+
+    <form method="post" asp-controller="Calendar" asp-action="Logout">
+        <button type="submit" class="btn btn-primary">Выйти</button>
+    </form>
+@*     <form asp-page-handler="Logout" asp-controller="User" method="post">
+        <button type="submit" class="btn btn-primary">Выйти</button>
+    </form> *@
+
+    <!-- Дополнительное содержимое страницы -->
+    <!-- Скрипты JavaScript -->
+
+</body>
